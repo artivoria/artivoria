@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -134,9 +135,7 @@ nav{
   transform:translateY(-4px);
 }
 
-.section{
-  padding:100px 8%;
-}
+.section{padding:100px 8%}
 
 .section-label{
   color:var(--blue);
@@ -196,81 +195,35 @@ nav{
 
 .service:hover h3{color:#9db9dc}
 
-.portfolio{
-  background:#eae5db;
-}
+.portfolio{background:#eae5db}
 
 .portfolio-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:25px;
+  gap:30px;
   margin-top:55px;
 }
 
-.project{
-  overflow:hidden;
-}
+.project{min-width:0}
 
 .project-art{
-  height:320px;
+  min-height:320px;
+  padding:15px;
   display:flex;
   align-items:center;
   justify-content:center;
-  position:relative;
+  background:var(--ivory);
   overflow:hidden;
-  transition:.4s;
 }
 
-.project:hover .project-art{transform:scale(.98)}
-
-.art-one{background:#1E4B81;color:#F5F1E8}
-.art-two{background:#d7c6b1;color:#30251e}
-.art-three{background:#dce4d7;color:#31513c}
-.art-four{background:#242A32;color:#e8d9c3}
-
-.art-word{
-  font-size:clamp(30px,5vw,60px);
-  font-weight:900;
-  letter-spacing:-3px;
-  text-align:center;
-  z-index:2;
+.project-art img{
+  display:block;
+  width:100%;
+  height:320px;
+  object-fit:contain;
 }
 
-.art-one:before{
-  content:"";
-  position:absolute;
-  width:190px;height:190px;
-  border:1px solid rgba(255,255,255,.5);
-  transform:rotate(45deg);
-}
-
-.art-two:before{
-  content:"";
-  width:190px;height:190px;
-  border:2px solid #80664d;
-  border-radius:50%;
-  position:absolute;
-}
-
-.art-three:before{
-  content:"";
-  width:160px;height:160px;
-  background:#8ca58c;
-  border-radius:50%;
-  position:absolute;
-}
-
-.art-four:before{
-  content:"";
-  width:210px;height:210px;
-  border:1px solid #b7a58d;
-  position:absolute;
-  transform:rotate(45deg);
-}
-
-.project-info{
-  padding:18px 0 25px;
-}
+.project-info{padding:18px 0 10px}
 
 .project-info h3{
   font-size:19px;
@@ -282,13 +235,6 @@ nav{
   font-size:12px;
   letter-spacing:1px;
   text-transform:uppercase;
-}
-
-.demo-note{
-  margin-top:30px;
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.7;
 }
 
 .about{
@@ -317,12 +263,14 @@ nav{
   content:"";
   position:absolute;
   border:1px solid rgba(255,255,255,.35);
-  width:250px;height:250px;
+  width:250px;
+  height:250px;
   border-radius:50%;
 }
 
 .about-visual:after{
-  width:320px;height:320px;
+  width:320px;
+  height:320px;
 }
 
 .about-visual span{z-index:1}
@@ -333,9 +281,7 @@ nav{
   margin-top:22px;
 }
 
-.process{
-  background:#eae5db;
-}
+.process{background:#eae5db}
 
 .process-grid{
   display:grid;
@@ -415,6 +361,7 @@ footer strong{
   nav{padding:19px 6%}
   .logo{font-size:21px}
   .menu-btn{display:block}
+
   .nav-links{
     display:none;
     position:absolute;
@@ -428,28 +375,41 @@ footer strong{
     gap:22px;
     border-bottom:1px solid #ddd;
   }
+
   .nav-links.active{display:flex}
+
   .hero{
     min-height:78vh;
     padding:80px 7%;
   }
+
   .hero h1{letter-spacing:-3px}
+
   .hero:after{
-    width:180px;height:180px;
-    right:-100px;top:60px;
+    width:180px;
+    height:180px;
+    right:-100px;
+    top:60px;
   }
+
   .section{padding:75px 7%}
+
   .service-grid,
   .portfolio-grid,
   .about,
   .process-grid{
     grid-template-columns:1fr;
   }
+
   .service:nth-child(odd){border-right:0}
   .service:nth-child(even){padding-left:0}
-  .project-art{height:260px}
+
+  .project-art{min-height:280px}
+  .project-art img{height:280px}
+
   .about{gap:35px}
   .about-visual{min-height:280px}
+
   footer{
     flex-direction:column;
     text-align:center;
@@ -511,59 +471,95 @@ footer strong{
 </section>
 
 <section class="section portfolio" id="portfolio">
-  <div class="section-label">SELECTED CONCEPTS</div>
+  <div class="section-label">OUR CREATIVE WORK</div>
   <h2 class="section-title">A glimpse into<br>our creative world.</h2>
   <p class="section-desc">
-    Exploring ideas through visual identities, design directions and
-    creative experiments.
+    A selection of creative designs and visual explorations from ARTIVORIA.
   </p>
 
   <div class="portfolio-grid">
+
     <div class="project">
-      <div class="project-art art-one">
-        <div class="art-word">FORMA.</div>
+      <div class="project-art">
+        <img src="20261120_145852.png" alt="ARTIVORIA design project 1">
       </div>
       <div class="project-info">
-        <h3>FORMA STUDIO</h3>
-        <p>Brand Identity · Creative Direction</p>
+        <h3>CREATIVE DESIGN 01</h3>
+        <p>Graphic Design · Visual Advertising</p>
       </div>
     </div>
 
     <div class="project">
-      <div class="project-art art-two">
-        <div class="art-word">ÉLÉGANCE</div>
+      <div class="project-art">
+        <img src="20261112_230936.jpg" alt="ARTIVORIA design project 2">
       </div>
       <div class="project-info">
-        <h3>ATELIER ÉLÉGANCE</h3>
-        <p>Luxury Branding · Typography</p>
+        <h3>CREATIVE DESIGN 02</h3>
+        <p>Graphic Design · Visual Advertising</p>
       </div>
     </div>
 
     <div class="project">
-      <div class="project-art art-three">
-        <div class="art-word">PURE.</div>
+      <div class="project-art">
+        <img src="20261112_004259.jpg" alt="ARTIVORIA design project 3">
       </div>
       <div class="project-info">
-        <h3>PURE BOTANICS</h3>
-        <p>Packaging · Visual Identity</p>
+        <h3>CREATIVE DESIGN 03</h3>
+        <p>Graphic Design · Visual Advertising</p>
       </div>
     </div>
 
     <div class="project">
-      <div class="project-art art-four">
-        <div class="art-word">CREATE<br>MORE.</div>
+      <div class="project-art">
+        <img src="20261112_000540.png" alt="ARTIVORIA design project 4">
       </div>
       <div class="project-info">
-        <h3>CREATIVE COLLECTIVE</h3>
-        <p>Art Direction · Digital Design</p>
+        <h3>CREATIVE DESIGN 04</h3>
+        <p>Graphic Design · Visual Advertising</p>
       </div>
     </div>
+
+    <div class="project">
+      <div class="project-art">
+        <img src="20261111_175901.png" alt="ARTIVORIA design project 5">
+      </div>
+      <div class="project-info">
+        <h3>CREATIVE DESIGN 05</h3>
+        <p>Graphic Design · Visual Advertising</p>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-art">
+        <img src="20261112_005453.jpg" alt="ARTIVORIA design project 6">
+      </div>
+      <div class="project-info">
+        <h3>CREATIVE DESIGN 06</h3>
+        <p>Graphic Design · Visual Advertising</p>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-art">
+        <img src="20261113_170604.png" alt="ARTIVORIA design project 7">
+      </div>
+      <div class="project-info">
+        <h3>CREATIVE DESIGN 07</h3>
+        <p>Graphic Design · Visual Advertising</p>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-art">
+        <img src="20261114_115627.jpg" alt="ARTIVORIA design project 8">
+      </div>
+      <div class="project-info">
+        <h3>CREATIVE DESIGN 08</h3>
+        <p>Graphic Design · Visual Advertising</p>
+      </div>
+    </div>
+
   </div>
-
-  <p class="demo-note">
-    Note: These are conceptual design explorations created to showcase
-    creative directions, not commissioned client projects.
-  </p>
 </section>
 
 <section class="section about" id="about">
@@ -592,11 +588,13 @@ footer strong{
       <h3>Understand</h3>
       <p>We explore your goals, audience and vision to find the right creative direction.</p>
     </div>
+
     <div class="process-card">
       <div class="number">02 / CREATE</div>
       <h3>Imagine</h3>
       <p>We transform ideas into thoughtful concepts and meaningful design.</p>
     </div>
+
     <div class="process-card">
       <div class="number">03 / ELEVATE</div>
       <h3>Deliver</h3>
