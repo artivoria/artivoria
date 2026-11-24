@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARTIVORIA | Admin Login</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  min-height:100vh;display:flex;justify-content:center;align-items:center;
+  padding:20px;background:#F5F1E8;color:#242A32;
+  font-family:Arial,Helvetica,sans-serif
+}
+.card{
+  width:100%;max-width:420px;background:white;padding:35px;
+  border-radius:18px;box-shadow:0 15px 45px rgba(0,0,0,.08)
+}
+.logo{color:#1E4B81;font-size:25px;font-weight:900;letter-spacing:3px}
+.tag{font-size:11px;letter-spacing:3px;margin-top:10px;color:#777}
+h2{margin-top:35px;font-size:28px}
+p{color:#777;line-height:1.7;font-size:14px;margin:12px 0 25px}
+label{display:block;font-size:13px;font-weight:bold;margin:18px 0 8px}
+input{
+  width:100%;padding:14px;border:1px solid #ddd;border-radius:8px;
+  font-size:15px
+}
+button{
+  width:100%;padding:15px;background:#1E4B81;color:white;
+  border:0;border-radius:8px;font-weight:bold;cursor:pointer;margin-top:22px
+}
+button:hover{background:#16375E}
+.forgot{
+  display:block;text-align:right;margin-top:15px;color:#1E4B81;
+  font-size:13px;cursor:pointer
+}
+#status{margin-top:20px;font-size:14px;overflow-wrap:anywhere}
+.home{text-align:center;margin-top:25px;font-size:13px;color:#1E4B81}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo">ARTIVORIA</div>
+  <div class="tag">ADMINISTRATION</div>
+
+  <h2>Admin Login</h2>
+  <p>Sign in to access your administration dashboard.</p>
+
+  <form id="loginForm">
+    <label for="email">Email Address</label>
+    <input id="email" type="email" placeholder="Admin email" required>
+
+    <label for="password">Password</label>
+    <input id="password" type="password" placeholder="Password" required>
+
+    <button type="submit" id="loginBtn">LOGIN TO DASHBOARD</button>
+  </form>
+
+  <span class="forgot" id="forgotBtn">Forgot Password?</span>
+  <div id="status"></div>
+  <a href="index.html" class="home">← Back to Website</a>
+</div>
+
+<script type="module">
+import { createClient } from
+'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+const SUPABASE_URL = 'https://tkihuqrfpnqrwhubwejj.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_CAitK7W0-PGcWGVM_MXf6Q_zbkkAufg';
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const statusBox = document.getElementById('status');
+const loginBtn = document.getElementById('loginBtn');
+
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  loginBtn.disabled = true;
+  loginBtn.textContent = 'PLEASE WAIT...';
+  statusBox.textContent = '';
+
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if (error) {
+    statusBox.textContent = error.message;
+    statusBox.style.color = '#b42318';
+    loginBtn.disabled = false;
+    loginBtn.textContent = 'LOGIN TO DASHBOARD';
+    return;
+  }
+
+  window.location.href = 'admin.html';
+});
+
+document.getElementById('forgotBtn').addEventListener('click', async () => {
+  const email = document.getElementById('email').value.trim();
+
+  if (!email) {
+    statusBox.textContent = 'Please enter your email address first.';
+    statusBox.style.color = '#b42318';
+    document.getElementById('email').focus();
+    return;
+  }
+
+  statusBox.textContent = 'Sending reset email...';
+  statusBox.style.color = '#1E4B81';
+
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.origin + 
+      window.location.pathname.replace('login.html', 'reset-password.html')
+  });
+
+  if (error) {
+    statusBox.textContent = error.message;
+    statusBox.style.color = '#b42318';
+  } else {
+    statusBox.textContent = 'Password reset email requested. Check your inbox.';
+    statusBox.style.color = '#1E4B81';
+  }
+});
+</script>
+
+</body>
+</html>
