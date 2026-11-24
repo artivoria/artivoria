@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARTIVORIA | Admin</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f4f1ea;color:#242a32}
+.sidebar{background:#1e4b81;color:white;width:230px;position:fixed;top:0;bottom:0;padding:25px 18px}
+.logo{font-size:22px;letter-spacing:3px;font-weight:bold;margin-bottom:8px}
+.sub{font-size:11px;color:#c8d5e5;margin-bottom:35px}
+.nav button{display:block;width:100%;text-align:left;padding:14px;margin:5px 0;border:0;border-radius:9px;background:transparent;color:white;font-size:14px;cursor:pointer}
+.nav button:hover,.nav button.active{background:#ffffff22}
+.main{margin-left:230px;padding:30px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px;gap:10px}
+.top h1{font-size:25px}
+.admin{background:white;padding:10px 15px;border-radius:30px;font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:white;border-radius:16px;padding:22px;box-shadow:0 3px 15px #00000008}
+.card small{color:#727b84}
+.card h2{font-size:27px;margin-top:12px;color:#1e4b81}
+.card p{font-size:12px;margin-top:8px;color:#73808b}
+.section{margin-top:25px}
+.section h2{font-size:19px;margin-bottom:15px}
+.panel{background:white;border-radius:16px;padding:22px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:500px}
+th,td{text-align:left;padding:13px 10px;border-bottom:1px solid #eee;font-size:13px}
+th{color:#73808b;font-size:12px}
+.status{background:#e8f4e9;color:#26763b;padding:6px 10px;border-radius:20px;font-size:11px}
+.status.pending{background:#fff1d9;color:#9b6511}
+.status.review{background:#e5edfa;color:#1e4b81}
+.servicegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.service{padding:18px;border:1px solid #e8e8e8;border-radius:12px}
+.service h3{font-size:15px;margin-bottom:10px}
+.service p{font-size:13px;color:#71808b}
+.hidden{display:none}
+.note{background:#fff5e5;padding:15px;border-radius:12px;margin-top:20px;font-size:13px;color:#725322}
+@media(max-width:800px){
+.sidebar{width:100%;position:relative;padding:18px}
+.sub{margin-bottom:15px}
+.nav{display:flex;overflow-x:auto;gap:5px}
+.nav button{min-width:max-content;width:auto;margin:0;padding:11px}
+.main{margin:0;padding:18px}
+.cards{grid-template-columns:repeat(2,1fr)}
+.servicegrid{grid-template-columns:1fr}
+.top h1{font-size:21px}
+}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+<div class="logo">ARTIVORIA</div>
+<div class="sub">ADMIN CONTROL PANEL</div>
+<div class="nav">
+<button class="active" onclick="show('dashboard',this)">▦ Dashboard</button>
+<button onclick="show('users',this)">♙ Users</button>
+<button onclick="show('orders',this)">▤ Orders</button>
+<button onclick="show('services',this)">✦ Services</button>
+<button onclick="show('analytics',this)">◷ Analytics</button>
+<button onclick="show('inquiries',this)">✉ Inquiries</button>
+</div>
+</aside>
+
+<main class="main">
+<div class="top">
+<h1 id="heading">Dashboard Overview</h1>
+<div class="admin">♙ Administrator</div>
+</div>
+
+<div id="dashboard">
+<div class="cards">
+<div class="card"><small>Total Users</small><h2>0</h2><p>Registered users</p></div>
+<div class="card"><small>Total Orders</small><h2>0</h2><p>All project orders</p></div>
+<div class="card"><small>Active Services</small><h2>4</h2><p>Currently listed</p></div>
+<div class="card"><small>New Inquiries</small><h2>0</h2><p>Client messages</p></div>
+</div>
+<div class="section">
+<h2>Recent Activity</h2>
+<div class="panel">
+<p style="color:#77818b;font-size:14px">Activity data will appear here after a database is connected.</p>
+</div>
+</div>
+</div>
+
+<div id="users" class="hidden section">
+<h2>User Management</h2>
+<div class="panel">
+<table><thead><tr><th>User</th><th>Email</th><th>Joined</th><th>Status</th></tr></thead>
+<tbody><tr><td colspan="4">Database connection required to display users.</td></tr></tbody></table>
+</div>
+</div>
+
+<div id="orders" class="hidden section">
+<h2>Orders & Projects</h2>
+<div class="panel">
+<table><thead><tr><th>Order ID</th><th>Client</th><th>Service</th><th>Date</th><th>Status</th></tr></thead>
+<tbody><tr><td colspan="5">Database connection required to display orders.</td></tr></tbody></table>
+</div>
+</div>
+
+<div id="services" class="hidden section">
+<h2>Services Management</h2>
+<div class="servicegrid">
+<div class="service"><h3>Brand Identity</h3><p>Logo, brand system & identity design.</p></div>
+<div class="service"><h3>Graphic Design</h3><p>Posters, advertisements & creatives.</p></div>
+<div class="service"><h3>Social Media Design</h3><p>Social posts & campaign creatives.</p></div>
+<div class="service"><h3>Web Design</h3><p>Website layouts & digital experiences.</p></div>
+<div class="service"><h3>Advertising Design</h3><p>Visuals for marketing & promotion.</p></div>
+<div class="service"><h3>Custom Projects</h3><p>Special creative requests.</p></div>
+</div>
+</div>
+
+<div id="analytics" class="hidden section">
+<h2>Usage & Analytics</h2>
+<div class="cards">
+<div class="card"><small>Website Visits</small><h2>—</h2><p>Requires analytics setup</p></div>
+<div class="card"><small>Popular Services</small><h2>—</h2><p>Requires tracking</p></div>
+<div class="card"><small>Conversion Rate</small><h2>—</h2><p>Requires tracking</p></div>
+<div class="card"><small>Revenue</small><h2>—</h2><p>Requires order records</p></div>
+</div>
+</div>
+
+<div id="inquiries" class="hidden section">
+<h2>Client Inquiries</h2>
+<div class="panel">
+<p style="color:#77818b;font-size:14px">Contact form submissions will appear here after a database or form service is connected.</p>
+</div>
+</div>
+
+<div class="note">
+<strong>Preview Dashboard:</strong> This is the visual admin panel. User, order, analytics and inquiry data is not connected yet. A secure backend and admin login must be set up before using it for real data.
+</div>
+</main>
+
+<script>
+function show(id,btn){
+document.querySelectorAll('.main>div[id],.main #dashboard').forEach(el=>el.classList.add('hidden'));
+document.getElementById(id).classList.remove('hidden');
+document.getElementById('heading').textContent={
+dashboard:'Dashboard Overview',
+users:'Users Management',
+orders:'Orders & Projects',
+services:'Services Management',
+analytics:'Usage & Analytics',
+inquiries:'Client Inquiries'
+}[id];
+document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+}
+</script>
+</body>
+</html>
